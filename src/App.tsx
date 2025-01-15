@@ -65,6 +65,8 @@ function App() {
   };
   const resetPotions = () => {
     setCurrentPotions(potions);
+    setCraftTime(null)
+    setPotion(null)
   };
 
   useEffect(() => {
