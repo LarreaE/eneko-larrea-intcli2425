@@ -1314,3 +1314,8 @@ export const expectedPotionsForLevelRequirement: Potion[] = [
     },
   ];
   
+  export const expectedIngredientsNames = [
+    "Phoenix Feather",
+    "Molten Ember",
+    "Flameflower Extract",
+  ]
