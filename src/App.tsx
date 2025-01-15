@@ -141,7 +141,7 @@ function App() {
               onClick={() => showModal(potion)}
             >
               <img
-                src={`../public/${potion.image}`}
+                src={`${potion.image}`}
                 className="w-16 h-16 object-contain rounded-full"
               />
               <span>{potion.name}</span>
