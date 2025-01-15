@@ -37,3 +37,16 @@ export const listIngredients = (potion: Potion): string[] => {
   }
   return names;
 };
+
+export const findPotionByEffect = (potions: Potion[], effect: string): Potion[] => {
+  const newPotions = [];
+  for (let i = 0; i < potions.length; i++) {
+    for (let j = 0; j < potions[i].effects.secondary.length; j++) {
+      if (potions[i].effects.secondary[j].attribute === effect) {
+        // si alguno de los effectos secundaios tiene el attributo(manaRegeneration) es igual al insertado
+        newPotions.push(potions[i]);
+      }
+    }
+  }
+  return newPotions;
+};

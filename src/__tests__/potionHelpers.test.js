@@ -1,6 +1,6 @@
 
-import {filterByLevelRequirement, getPotionsByRarity, listIngredients} from '../helpers/potionHelpers.ts'
-import {potions, expectedPotionsForLevelRequirement, expectedPotionsForRaritySort, expectedIngredientsNames} from '../__mocks__/data.ts'
+import {filterByLevelRequirement, findPotionByEffect, getPotionsByRarity, listIngredients} from '../helpers/potionHelpers.ts'
+import {potions, expectedPotionsForLevelRequirement, expectedPotionsForRaritySort, expectedIngredientsNames, expectedEffectPotions} from '../__mocks__/data.ts'
 
 describe('Check if filterByLevelRequirement works as intended', () => {
 	it('should return two potions, one with minimum level 22 and another 20', () => {
@@ -35,5 +35,17 @@ describe('Check if listIngredients works as intended', () => {
         const result = listIngredients(eternalFlame);        
         //assert
 		expect(result).toStrictEqual(expectedNames);
+	})
+})
+
+describe('Check if findPotionByEffect works as intended', () => {
+	it('should return the potions that have one of the secondary effect manaRegeneration', () => {
+        //arrange
+        const allPotions = potions
+        const expectedPotions = expectedEffectPotions    //esperamos que el resultado sea el mock que ya esta preparado con todas las pociones con effecto secundario manaRegeneration
+        //act
+        const result = findPotionByEffect(allPotions,'manaRegeneration');        
+        //assert
+		expect(result).toStrictEqual(expectedPotions);
 	})
 })

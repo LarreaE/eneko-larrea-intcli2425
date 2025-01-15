@@ -1319,3 +1319,197 @@ export const expectedPotionsForLevelRequirement: Potion[] = [
     "Molten Ember",
     "Flameflower Extract",
   ]
+
+  export const expectedEffectPotions: Potion[] = [
+    {
+      id: "potion_002",
+      name: "Essence of Frostbound Will",
+      type: "consumable",
+      rarity: "legendary",
+      effects: {
+        primary: {
+          attribute: "iceResistance",
+          value: 85,
+          duration: {
+            unit: "minutes",
+            amount: 20,
+          },
+        },
+        secondary: [
+          {
+            attribute: "manaRegeneration",
+            value: 15,
+            duration: {
+              unit: "seconds",
+              amount: 120,
+            },
+          },
+          {
+            attribute: "focusBoost",
+            value: 30,
+            duration: {
+              unit: "minutes",
+              amount: 10,
+            },
+          },
+        ],
+      },
+      ingredients: [
+        {
+          name: "Frostbloom Petals",
+          quantity: 2,
+          origin: {
+            location: "Frozen Glade",
+            region: "Everwhite Tundra",
+          },
+        },
+        {
+          name: "Ice Crystal Shard",
+          quantity: 3,
+          origin: {
+            location: "Glacier Cavern",
+            region: "Shivering Expanse",
+          },
+        },
+        {
+          name: "Chilled Essence",
+          quantity: 1,
+          origin: {
+            location: "Frozen Waterfall",
+            region: "Icy Veil",
+          },
+        },
+      ],
+      crafting: {
+        station: "Frostforge Lab",
+        required_level: 28,
+        time: {
+          unit: "minutes",
+          amount: 60,
+        },
+      },
+      usage: {
+        instructions: [
+          "Consume in freezing temperatures for optimal effects.",
+          "Do not expose to open flames.",
+        ],
+        restrictions: {
+          levelRequirement: 20,
+          classRestrictions: ["Frost Sorcerer", "Cryomancer", "Elemental Shaman"],
+          warnings: [
+            "May cause temporary cold sensitivity.",
+            "Do not combine with fire-based potions.",
+          ],
+        },
+      },
+      meta: {
+        created_by: "Icecaster Elowen",
+        lore: "A potion imbued with the eternal frost, granting resilience and clarity even in the harshest winters.",
+        availability: {
+          in_shops: true,
+          quest_reward: false,
+          drop_rate: {
+            boss: "Glacial Titan",
+            chance: "3%",
+          },
+        },
+      },
+      image: "image_2.webp",
+    },
+    {
+      id: "potion_005",
+      name: "Elixir of Arcane Surge",
+      type: "consumable",
+      rarity: "legendary",
+      effects: {
+        primary: {
+          attribute: "spellPower",
+          value: 100,
+          duration: {
+            unit: "minutes",
+            amount: 10,
+          },
+        },
+        secondary: [
+          {
+            attribute: "manaRegeneration",
+            value: 20,
+            duration: {
+              unit: "seconds",
+              amount: 300,
+            },
+          },
+          {
+            attribute: "cooldownReduction",
+            value: 15,
+            duration: {
+              unit: "minutes",
+              amount: 8,
+            },
+          },
+        ],
+      },
+      ingredients: [
+        {
+          name: "Arcane Crystal",
+          quantity: 2,
+          origin: {
+            location: "Crystal Spire",
+            region: "Mystic Highlands",
+          },
+        },
+        {
+          name: "Enchanted Powder",
+          quantity: 3,
+          origin: {
+            location: "Mage's Sanctum",
+            region: "Astral Plains",
+          },
+        },
+        {
+          name: "Moonlit Dew",
+          quantity: 1,
+          origin: {
+            location: "Silverlake Grove",
+            region: "Lunar Valley",
+          },
+        },
+      ],
+      crafting: {
+        station: "Arcane Altar",
+        required_level: 30,
+        time: {
+          unit: "minutes",
+          amount: 60,
+        },
+      },
+      usage: {
+        instructions: [
+          "Consume during spellcasting for enhanced power.",
+          "Avoid overuse to prevent magical feedback.",
+        ],
+        restrictions: {
+          levelRequirement: 25,
+          classRestrictions: ["Mage", "Sorcerer", "Spellbinder"],
+          warnings: [
+            "May cause temporary mana burn.",
+            "Not effective in anti-magic zones.",
+          ],
+        },
+      },
+      meta: {
+        created_by: "Archmage Solarin",
+        lore: "Infused with the essence of raw arcane energy, this potion empowers mages to reach new heights of spellcasting mastery.",
+        availability: {
+          in_shops: false,
+          quest_reward: true,
+          drop_rate: {
+            boss: "Elder Elemental",
+            chance: "7%",
+          },
+        },
+      },
+      image: "image_5.webp",
+    },
+  ];
+  
