@@ -38,7 +38,10 @@ export const listIngredients = (potion: Potion): string[] => {
   return names;
 };
 
-export const findPotionByEffect = (potions: Potion[], effect: string): Potion[] => {
+export const findPotionByEffect = (
+  potions: Potion[],
+  effect: string
+): Potion[] => {
   const newPotions = [];
   for (let i = 0; i < potions.length; i++) {
     for (let j = 0; j < potions[i].effects.secondary.length; j++) {
@@ -49,4 +52,24 @@ export const findPotionByEffect = (potions: Potion[], effect: string): Potion[] 
     }
   }
   return newPotions;
+};
+
+export const calculateCraftingTime = (potions: Potion[]): number => {
+  let totalMinutes = 0;
+  for (let i = 0; i < potions.length; i++) {
+    switch (potions[i].crafting.time.unit) {
+      case "hours":
+        totalMinutes += potions[i].crafting.time.amount * 60;
+        break;
+      case "minutes":
+        totalMinutes += potions[i].crafting.time.amount;
+        break;
+      case "seconds":
+        totalMinutes += potions[i].crafting.time.amount / 60;
+        break;
+      default:
+        break;
+    }
+  }
+  return totalMinutes;
 };

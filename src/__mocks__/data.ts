@@ -1513,3 +1513,196 @@ export const expectedPotionsForLevelRequirement: Potion[] = [
     },
   ];
   
+  export const differentTimeUnitPotions: Potion[] = [
+    {
+      id: "potion_001",
+      name: "Elixir of Eternal Flame",
+      type: "consumable",
+      rarity: "legendary",
+      effects: {
+        primary: {
+          attribute: "fireResistance",
+          value: 80,
+          duration: {
+            unit: "minutes",
+            amount: 15,
+          },
+        },
+        secondary: [
+          {
+            attribute: "healthRegeneration",
+            value: 10,
+            duration: {
+              unit: "seconds",
+              amount: 300,
+            },
+          },
+          {
+            attribute: "staminaBoost",
+            value: 25,
+            duration: {
+              unit: "minutes",
+              amount: 5,
+            },
+          },
+        ],
+      },
+      ingredients: [
+        {
+          name: "Phoenix Feather",
+          quantity: 1,
+          origin: {
+            location: "Volcanic Crater",
+            region: "Everburning Peaks",
+          },
+        },
+        {
+          name: "Molten Ember",
+          quantity: 3,
+          origin: {
+            location: "Infernal Forge",
+            region: "Depths of Agnarok",
+          },
+        },
+        {
+          name: "Flameflower Extract",
+          quantity: 2,
+          origin: {
+            location: "Ashen Fields",
+            region: "Blazing Steppes",
+          },
+        },
+      ],
+      crafting: {
+        station: "Alchemist's Crucible",
+        required_level: 25,
+        time: {
+          unit: "minutes",
+          amount: 45,
+        },
+      },
+      usage: {
+        instructions: [
+          "Shake well before use.",
+          "Drink entirely to activate the effects.",
+          "Avoid exposure to water for 10 minutes after consumption.",
+        ],
+        restrictions: {
+          levelRequirement: 15,
+          classRestrictions: ["Fire Mage", "Pyromancer", "Elemental Shaman"],
+          warnings: [
+            "Do not mix with Ice-based potions.",
+            "May cause temporary overheating symptoms.",
+          ],
+        },
+      },
+      meta: {
+        created_by: "Grand Alchemist Tharion",
+        lore: "Crafted from the essence of eternal flames, this potion grants unmatched resistance and power to those who dare consume it.",
+        availability: {
+          in_shops: false,
+          quest_reward: true,
+          drop_rate: {
+            boss: "Infernal Dragon",
+            chance: "5%",
+          },
+        },
+      },
+      image: "image_1.webp",
+    },
+    {
+      id: "potion_010",
+      name: "Draught of Eternity",
+      type: "consumable",
+      rarity: "mythic",
+      effects: {
+        primary: {
+          attribute: "immortality",
+          value: 100,
+          duration: {
+            unit: "seconds",
+            amount: 300,
+          },
+        },
+        secondary: [
+          {
+            attribute: "timeSlow",
+            value: 50,
+            duration: {
+              unit: "seconds",
+              amount: 30,
+            },
+          },
+          {
+            attribute: "regeneration",
+            value: 100,
+            duration: {
+              unit: "seconds",
+              amount: 300,
+            },
+          },
+        ],
+      },
+      ingredients: [
+        {
+          name: "Temporal Lotus",
+          quantity: 1,
+          origin: {
+            location: "Chronos Gardens",
+            region: "Timeless Vale",
+          },
+        },
+        {
+          name: "Essence of Infinity",
+          quantity: 1,
+          origin: {
+            location: "Echoing Caverns",
+            region: "Void Nexus",
+          },
+        },
+        {
+          name: "Stardust Veil",
+          quantity: 2,
+          origin: {
+            location: "Celestial Fields",
+            region: "Astral Heights",
+          },
+        },
+      ],
+      crafting: {
+        station: "Chronomancer's Forge",
+        required_level: 35,
+        time: {
+          unit: "hours",
+          amount: 5,
+        },
+      },
+      usage: {
+        instructions: [
+          "Drink to transcend time and death temporarily.",
+          "Best used in dire circumstances.",
+        ],
+        restrictions: {
+          levelRequirement: 30,
+          classRestrictions: ["Chronomancer", "Seer", "Eternal Guardian"],
+          warnings: [
+            "Excessive use may disrupt the timeline.",
+            "Side effects include temporal disorientation.",
+          ],
+        },
+      },
+      meta: {
+        created_by: "Archmage Thaelos",
+        lore: "Crafted in the forges of eternity, this potion bends the very fabric of time to grant the user a fleeting taste of immortality.",
+        availability: {
+          in_shops: false,
+          quest_reward: true,
+          drop_rate: {
+            boss: "Chrono Warden",
+            chance: "2%",
+          },
+        },
+      },
+      image: "image_10.webp",
+    },
+  ];

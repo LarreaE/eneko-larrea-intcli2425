@@ -1,6 +1,6 @@
 
-import {filterByLevelRequirement, findPotionByEffect, getPotionsByRarity, listIngredients} from '../helpers/potionHelpers.ts'
-import {potions, expectedPotionsForLevelRequirement, expectedPotionsForRaritySort, expectedIngredientsNames, expectedEffectPotions} from '../__mocks__/data.ts'
+import {calculateCraftingTime, filterByLevelRequirement, findPotionByEffect, getPotionsByRarity, listIngredients} from '../helpers/potionHelpers.ts'
+import {potions, expectedPotionsForLevelRequirement, expectedPotionsForRaritySort, expectedIngredientsNames, expectedEffectPotions, differentTimeUnitPotions} from '../__mocks__/data.ts'
 
 describe('Check if filterByLevelRequirement works as intended', () => {
 	it('should return two potions, one with minimum level 22 and another 20', () => {
@@ -47,5 +47,17 @@ describe('Check if findPotionByEffect works as intended', () => {
         const result = findPotionByEffect(allPotions,'manaRegeneration');        
         //assert
 		expect(result).toStrictEqual(expectedPotions);
+	})
+})
+
+describe('Check if calculateCraftingTime works as intended', () => {
+	it('should return the total amount of minutes that require the prepared potions array mock', () => {
+        //arrange
+        const allPotions = differentTimeUnitPotions
+        const expectedTime = 345    //5 horas + 45 minutos => 5*60+45 = 345 esperamos que el resultado sea la suma de las dos pociones ( no hay ninguna que tarde segundos)
+        //act
+        const result = calculateCraftingTime(allPotions);        
+        //assert
+		expect(result).toBe(expectedTime);
 	})
 })
