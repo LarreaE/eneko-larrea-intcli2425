@@ -11,3 +11,15 @@ export const filterByLevelRequirement = (potions:Potion[], level:number): Potion
     }
     return newPotions
 }
+
+export const getPotionsByRarity = (potions:Potion[], rarity:string): Potion[] => {
+
+    const newPotions = [];
+
+    for (let i = 0; i < potions.length; i++) {
+        if (potions[i].rarity === rarity) { // si la rareza es igual
+            newPotions.push(potions[i]);
+        }
+    }
+    return newPotions
+}

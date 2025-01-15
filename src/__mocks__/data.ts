@@ -1120,3 +1120,197 @@ export const expectedPotionsForLevelRequirement: Potion[] = [
       image: "image_6.webp",
     },
   ];
+
+  export const expectedPotionsForRaritySort: Potion[] = [
+    {
+      id: "potion_008",
+      name: "Phoenixfire Draught",
+      type: "consumable",
+      rarity: "mythic",
+      effects: {
+        primary: {
+          attribute: "resurrection",
+          value: 100,
+          duration: {
+            unit: "instant",
+            amount: 0,
+          },
+        },
+        secondary: [
+          {
+            attribute: "fireResistance",
+            value: 70,
+            duration: {
+              unit: "minutes",
+              amount: 15,
+            },
+          },
+          {
+            attribute: "burningAura",
+            value: 30,
+            duration: {
+              unit: "minutes",
+              amount: 10,
+            },
+          },
+        ],
+      },
+      ingredients: [
+        {
+          name: "Phoenix Feather",
+          quantity: 1,
+          origin: {
+            location: "Ashen Peaks",
+            region: "Infernal Ridge",
+          },
+        },
+        {
+          name: "Emberheart",
+          quantity: 2,
+          origin: {
+            location: "Molten Caves",
+            region: "Blazing Wastes",
+          },
+        },
+        {
+          name: "Lava Crystal",
+          quantity: 1,
+          origin: {
+            location: "Crimson Chasm",
+            region: "Magma Depths",
+          },
+        },
+      ],
+      crafting: {
+        station: "Pyromancer's Crucible",
+        required_level: 30,
+        time: {
+          unit: "hours",
+          amount: 3,
+        },
+      },
+      usage: {
+        instructions: [
+          "Drink to rise from ashes upon defeat.",
+          "Recommended for use during critical battles.",
+        ],
+        restrictions: {
+          levelRequirement: 25,
+          classRestrictions: ["Mage", "Paladin", "Sorcerer"],
+          warnings: [
+            "Single-use only; effects are irreversible.",
+            "Improper storage may neutralize the potion's potency.",
+          ],
+        },
+      },
+      meta: {
+        created_by: "Grand Pyromancer Elyndra",
+        lore: "A mythical draught imbued with the power of the phoenix, capable of restoring life to the fallen and shielding the bearer with flames of rebirth.",
+        availability: {
+          in_shops: false,
+          quest_reward: true,
+          drop_rate: {
+            boss: "Ashen Guardian",
+            chance: "3%",
+          },
+        },
+      },
+      image: "image_8.webp",
+    },
+    {
+      id: "potion_010",
+      name: "Draught of Eternity",
+      type: "consumable",
+      rarity: "mythic",
+      effects: {
+        primary: {
+          attribute: "immortality",
+          value: 100,
+          duration: {
+            unit: "seconds",
+            amount: 300,
+          },
+        },
+        secondary: [
+          {
+            attribute: "timeSlow",
+            value: 50,
+            duration: {
+              unit: "seconds",
+              amount: 30,
+            },
+          },
+          {
+            attribute: "regeneration",
+            value: 100,
+            duration: {
+              unit: "seconds",
+              amount: 300,
+            },
+          },
+        ],
+      },
+      ingredients: [
+        {
+          name: "Temporal Lotus",
+          quantity: 1,
+          origin: {
+            location: "Chronos Gardens",
+            region: "Timeless Vale",
+          },
+        },
+        {
+          name: "Essence of Infinity",
+          quantity: 1,
+          origin: {
+            location: "Echoing Caverns",
+            region: "Void Nexus",
+          },
+        },
+        {
+          name: "Stardust Veil",
+          quantity: 2,
+          origin: {
+            location: "Celestial Fields",
+            region: "Astral Heights",
+          },
+        },
+      ],
+      crafting: {
+        station: "Chronomancer's Forge",
+        required_level: 35,
+        time: {
+          unit: "hours",
+          amount: 5,
+        },
+      },
+      usage: {
+        instructions: [
+          "Drink to transcend time and death temporarily.",
+          "Best used in dire circumstances.",
+        ],
+        restrictions: {
+          levelRequirement: 30,
+          classRestrictions: ["Chronomancer", "Seer", "Eternal Guardian"],
+          warnings: [
+            "Excessive use may disrupt the timeline.",
+            "Side effects include temporal disorientation.",
+          ],
+        },
+      },
+      meta: {
+        created_by: "Archmage Thaelos",
+        lore: "Crafted in the forges of eternity, this potion bends the very fabric of time to grant the user a fleeting taste of immortality.",
+        availability: {
+          in_shops: false,
+          quest_reward: true,
+          drop_rate: {
+            boss: "Chrono Warden",
+            chance: "2%",
+          },
+        },
+      },
+      image: "image_10.webp",
+    },
+  ];
+  
