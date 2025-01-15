@@ -49,7 +49,20 @@ function App() {
     console.log(value, "minutes");
     setCraftTime(value)
   };
+  const applyAllFilters = (potions: Potion[]) => {
+    let newPotions = potions;
+    let level = (document.getElementById("level") as HTMLInputElement).value;
+    const numlevel = transformIntoNumber(level); //transform into number
 
+    let rarity = (document.getElementById("rar") as HTMLInputElement).value;
+    let effect = (document.getElementById("efe") as HTMLInputElement).value;
+
+    newPotions = filterByLevelRequirement(potions,numlevel);
+    newPotions = getPotionsByRarity(newPotions,rarity);
+    newPotions = findPotionByEffect(newPotions,effect);
+    
+    setCurrentPotions(newPotions);
+  };
   const resetPotions = () => {
     setCurrentPotions(potions);
   };
@@ -62,7 +75,7 @@ function App() {
     <>
       <div className="space-y-4">
         {potion ? (
-          <div className="space-y-4">
+          <div className="">
             <h2>Effects</h2>
             <p>---------------</p>
             <h2>Primary Effect</h2>
@@ -200,6 +213,13 @@ function App() {
           onClick={() => findPotionsbyEffect(potions)}
         >
           Effect Filter
+        </button>
+        <br />
+        <button
+          className="px-4 py-1 bg-gray-300 text-black text-sm rounded hover:bg-gray-200 transition"
+          onClick={() => applyAllFilters(potions)}
+        >
+          Apply All filters
         </button>
         <br />
         <button
