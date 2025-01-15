@@ -1,33 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import { potions } from './data/data'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [currentPotions, setCurrentPotions] = useState(potions)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+        <div className="space-y-4">
+          {currentPotions.length === 0 ? (
+            <p className="text-center font-medium text-gray-300">The cart is empty...</p>
+          ) : (
+            currentPotions.map((potion) => (
+              <div key={potion.id} className="flex items-center justify-between p-3 rounded border border-gray-500 bg-black/30 hover:bg-black/50 transition-colors duration-200">
+                <img
+                  src={`../public/${potion.image}`}
+                  className="w-16 h-16 object-contain rounded-full"
+                />
+                <span>{potion.name}</span>
+                <span>{potion.type}</span>
+                <div>
+                  <button
+                    className="px-4 py-1 bg-gray-300 text-black text-sm rounded hover:bg-gray-200 transition"
+                    onClick={() => {}}
+                  >
+                    Hello
+                  </button>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
     </>
   )
 }
