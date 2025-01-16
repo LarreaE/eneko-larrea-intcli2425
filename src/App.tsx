@@ -8,7 +8,6 @@ import {
   getPotionsByRarity,
 } from "./helpers/potionHelpers";
 import { Potion } from "./types/Potion";
-import PotionModal from "./components/PotionModal";
 import LevelSlider from "./components/Slider";
 import RaritySelect from "./components/RaritySelect";
 import EffectSelect from "./components/EffectSelect";
@@ -16,18 +15,11 @@ import PotionCard from "./components/PotionCard";
 
 function App() {
   const [currentPotions, setCurrentPotions] = useState(potions);
-  const [modal, setModal] = useState(false);
   const [, setLevel] = useState<number>(35);
   const [craftTime, setCraftTime] = useState<number | null>(null);
   const [, setRarity] = useState<string>("leyendary");
   const [, setPotion] = useState<Potion | null>(null);
 
-  const showModal = (potion: Potion) => {
-    setPotion(potion);
-    setModal(true);
-    console.log(potion);
-    console.log(modal);
-  };
 
   const findPotionsbyLevel = (potions: Potion[], level: number) => {
     setLevel(level);
