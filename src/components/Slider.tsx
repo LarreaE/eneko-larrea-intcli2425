@@ -15,7 +15,7 @@ interface Props {
 const LevelSlider: React.FC<Props> = ({ potions, findPotionsByLevel }) => {
   const [value, setValue] = React.useState<number>(30);
 
-  const handleChange = (event: Event, newValue: number | number[]) => {
+  const handleChange = (_event: Event, newValue: number | number[]) => {
     setValue(newValue as number);
   };
 
