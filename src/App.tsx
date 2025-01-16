@@ -9,6 +9,7 @@ import {
 } from "./helpers/potionHelpers";
 import { Potion } from "./types/Potion";
 import PotionModal from "./components/PotionModal";
+import LevelSlider from "./components/Slider";
 
 function App() {
   const [currentPotions, setCurrentPotions] = useState(potions);
@@ -28,11 +29,8 @@ function App() {
     return Number(value);
   };
   const findPotionsbyLevel = (potions: Potion[], level: number) => {
-    let value = (document.getElementById("level") as HTMLInputElement).value;
-    const num = transformIntoNumber(value); //transform into number
-    setLevel(num);
-    console.log(level);
-    setCurrentPotions(filterByLevelRequirement(potions, num));
+    setLevel(level);
+    setCurrentPotions(filterByLevelRequirement(potions, level));
   };
   const findPotionsbyRarity = (potions: Potion[]) => {
     let value = (document.getElementById("rar") as HTMLInputElement).value;
@@ -102,15 +100,10 @@ function App() {
         )}
 
         <div>
-          <label htmlFor="level">Level (15-35): {level}</label>
-          <input type="range" id="level" name="level" min={15} max="35" />
+          <LevelSlider
+          potions={potions}
+          findPotionsByLevel={findPotionsbyLevel}/>
         </div>
-        <button
-          className="px-4 py-1 bg-gray-300 text-black text-sm rounded hover:bg-gray-200 transition"
-          onClick={() => findPotionsbyLevel(potions, level)}
-        >
-          Level Filter
-        </button>
         <form action="#">
           <label htmlFor="rar">Rarities: </label>
           <select name="rarities" id="rar">
