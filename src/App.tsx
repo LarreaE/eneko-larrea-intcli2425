@@ -55,11 +55,11 @@ function App() {
 
   return (
     <>
-      <div className="border border-purple-700">
-        <div className="border border-green-700">
-          <div className="overflow-y-auto overflow-x-auto grid grid-cols-6 gap-6 content-center justify-center space-x-4 ">
+      <div className="border">
+        <div className="border">
+          <div className="grid grid-cols-9 gap-1 content-center justify-center space-x-4 ">
             {currentPotions.length === 0 ? (
-              <p className="text-center font-medium text-gray-300">
+              <p className="text-center justify-center content-center font-medium text-gray-300">
                 No Potions...
               </p>
             ) : (
@@ -69,7 +69,14 @@ function App() {
             )}
           </div>
         </div>
-        <div className="space-x-10 content-center justify-center align-middle justify-items-center border border-separate">
+        <div className="absolute bottom-2 space-x-10 content-center justify-center align-middle justify-items-center border border-separate">
+        {craftTime != null ? (
+            <>
+              <p>Time to create all filtered potions = {craftTime} minutes</p>
+            </>
+          ) : (
+            <></>
+          )}
           <div className="space-y-4 flex space-x-10 ">
             <div className="">
               <LevelSlider
@@ -103,14 +110,6 @@ function App() {
             Reset
           </button> */}
           </div>
-
-          {craftTime != null ? (
-            <>
-              <p>Time to create all filtered potions = {craftTime} minutes</p>
-            </>
-          ) : (
-            <></>
-          )}
         </div>
       </div>
     </>
