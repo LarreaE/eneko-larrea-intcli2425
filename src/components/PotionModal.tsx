@@ -29,7 +29,7 @@ const PotionModal: React.FC<Props> = ({ potion }) => {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Details</Button>
+      <Button className="border border-blue-600" onClick={handleOpen}>Details</Button>
       <Modal
         open={open}
         onClose={handleClose}

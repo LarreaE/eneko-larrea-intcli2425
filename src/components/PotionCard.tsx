@@ -13,14 +13,14 @@ interface Props {
 }
 const PotionCard: React.FC<Props> = ({ potion }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card className="border border-orange-300" sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
-          width="220"
+          width="10"
           image={potion.image}
           alt="potion"
-          className="h-42 object-contain rounded-full"
+          className="border border-red-600"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -34,10 +34,10 @@ const PotionCard: React.FC<Props> = ({ potion }) => {
             <span>Chance: {potion.meta.availability.drop_rate.chance}</span>
           </Typography>
         </CardContent>
-      </CardActionArea>
-      <CardActions className="h-12 grid-cols-3 gap-4 content-center flex items-center justify-center ma">
+        <CardActions className=" border border-red-400 content-end justify-center">
         <PotionModal potion={potion} key={`modal_${potion.id}`} />
       </CardActions>
+      </CardActionArea>
     </Card>
   );
 };
