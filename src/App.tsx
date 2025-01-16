@@ -10,12 +10,15 @@ import {
 import { Potion } from "./types/Potion";
 import PotionModal from "./components/PotionModal";
 import LevelSlider from "./components/Slider";
+import RaritySelect from "./components/RaritySelect";
+import EffectSelect from "./components/EffectSelect";
 
 function App() {
   const [currentPotions, setCurrentPotions] = useState(potions);
   const [modal, setModal] = useState(false);
   const [level, setLevel] = useState<number>(35);
   const [craftTime, setCraftTime] = useState<number | null>(null);
+  const [rarity, setRarity] = useState<string>('leyendary');
   const [potion, setPotion] = useState<Potion | null>(null);
 
   const showModal = (potion: Potion) => {
@@ -32,16 +35,17 @@ function App() {
     setLevel(level);
     setCurrentPotions(filterByLevelRequirement(potions, level));
   };
-  const findPotionsbyRarity = (potions: Potion[]) => {
-    let value = (document.getElementById("rar") as HTMLInputElement).value;
-    console.log(value);
-    setCurrentPotions(getPotionsByRarity(potions, value));
+
+  const findPotionsByRarity = (potions: Potion[], rarity: string) => {
+    setRarity(rarity);
+    setCurrentPotions(getPotionsByRarity(potions, rarity));
   };
-  const findPotionsbyEffect = (potions: Potion[]) => {
-    let value = (document.getElementById("efe") as HTMLInputElement).value;
-    console.log(value);
-    setCurrentPotions(findPotionByEffect(potions, value));
+
+  const findPotionsbyEffect = (potions: Potion[], effect: string) => {
+    console.log(effect);
+    setCurrentPotions(findPotionByEffect(potions, effect));
   };
+
   const showCraftTime = (potions: Potion[]) => {
     let value = calculateCraftingTime(potions);
     console.log(value, "minutes");
@@ -104,56 +108,16 @@ function App() {
           potions={potions}
           findPotionsByLevel={findPotionsbyLevel}/>
         </div>
-        <form action="#">
-          <label htmlFor="rar">Rarities: </label>
-          <select name="rarities" id="rar">
-            <option value="legendary">legendary</option>
-            <option value="mythic">mythic</option>
-            <option value="epic">epic</option>
-          </select>
-        </form>
-        <button
-          className="px-4 py-1 bg-gray-300 text-black text-sm rounded hover:bg-gray-200 transition"
-          onClick={() => findPotionsbyRarity(potions)}
-        >
-          Rarity Filter
-        </button>
-        <form action="#">
-          <label htmlFor="efe">Effects: </label>
-          <select name="effects" id="efe">
-            <option value="healthRegeneration">healthRegeneration</option>
-            <option value="staminaBoost">staminaBoost</option>
-            <option value="manaRegeneration">manaRegeneration</option>
-            <option value="focusBoost">focusBoost</option>
-            <option value="ElementalResistance">ElementalResistance</option>
-            <option value="ManaBoost">ManaBoost</option>
-            <option value="movementSpeed">movementSpeed</option>
-            <option value="dodgeChance">dodgeChance</option>
-            <option value="cooldownReduction">cooldownReduction</option>
-            <option value="maxHealth">maxHealth</option>
-            <option value="stealth">stealth</option>
-            <option value="fireResistance">fireResistance</option>
-            <option value="burningAura">burningAura</option>
-            <option value="criticalStrikeChance">criticalStrikeChance</option>
-            <option value="epitimeSlowc">timeSlow</option>
-            <option value="regeneration">regeneration</option>
-          </select>
-        </form>
-
-        <button
-          className="px-4 py-1 bg-gray-300 text-black text-sm rounded hover:bg-gray-200 transition"
-          onClick={() => findPotionsbyEffect(potions)}
-        >
-          Effect Filter
-        </button>
-        <br />
-        <button
-          className="px-4 py-1 bg-gray-300 text-black text-sm rounded hover:bg-gray-200 transition"
-          onClick={() => applyAllFilters(potions)}
-        >
-          Apply All filters
-        </button>
-        <br />
+        <div>
+          <RaritySelect
+          potions={potions}
+          findPotionsByRarity={findPotionsByRarity}/>
+        </div>
+        <div>
+          <EffectSelect
+          potions={potions}
+          findPotionsByEffect={findPotionsbyEffect}/>
+        </div>
         <button
           className="px-4 py-1 bg-gray-300 text-black text-sm rounded hover:bg-gray-200 transition"
           onClick={() => showCraftTime(currentPotions)}
