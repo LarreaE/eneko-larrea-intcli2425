@@ -8,6 +8,7 @@ import {
   getPotionsByRarity,
 } from "./helpers/potionHelpers";
 import { Potion } from "./types/Potion";
+import PotionModal from "./components/PotionModal";
 
 function App() {
   const [currentPotions, setCurrentPotions] = useState(potions);
@@ -15,7 +16,6 @@ function App() {
   const [level, setLevel] = useState<number>(35);
   const [craftTime, setCraftTime] = useState<number | null>(null);
   const [potion, setPotion] = useState<Potion | null>(null);
-
 
   const showModal = (potion: Potion) => {
     setPotion(potion);
@@ -47,7 +47,7 @@ function App() {
   const showCraftTime = (potions: Potion[]) => {
     let value = calculateCraftingTime(potions);
     console.log(value, "minutes");
-    setCraftTime(value)
+    setCraftTime(value);
   };
   const applyAllFilters = (potions: Potion[]) => {
     let newPotions = potions;
@@ -57,16 +57,16 @@ function App() {
     let rarity = (document.getElementById("rar") as HTMLInputElement).value;
     let effect = (document.getElementById("efe") as HTMLInputElement).value;
 
-    newPotions = filterByLevelRequirement(potions,numlevel);
-    newPotions = getPotionsByRarity(newPotions,rarity);
-    newPotions = findPotionByEffect(newPotions,effect);
-    
+    newPotions = filterByLevelRequirement(potions, numlevel);
+    newPotions = getPotionsByRarity(newPotions, rarity);
+    newPotions = findPotionByEffect(newPotions, effect);
+
     setCurrentPotions(newPotions);
   };
   const resetPotions = () => {
     setCurrentPotions(potions);
-    setCraftTime(null)
-    setPotion(null)
+    setCraftTime(null);
+    setPotion(null);
   };
 
   useEffect(() => {
@@ -76,61 +76,6 @@ function App() {
   return (
     <>
       <div className="space-y-4">
-        {potion ? (
-          <div className="">
-            <h2>Effects</h2>
-            <p>---------------</p>
-            <h2>Primary Effect</h2>
-            <p>Attribute: {potion.effects.primary.attribute}</p>
-            <p>Duration: {potion.effects.primary.duration.amount} {potion.effects.primary.duration.unit}</p>
-            <p>----</p>
-            <h2>Secondary Effects</h2>
-            {potion.effects.secondary.map((effect) => (
-            <>
-            <p>Effect Name: {effect.attribute}</p>
-            <p>Duration: {effect.duration.amount} {effect.duration.unit}</p>
-            <p>----</p>
-            </>
-          ))}
-            <h2>Ingredients</h2>
-            <p>---------------</p>
-            {potion.ingredients.map((ingredient) => (
-            <>
-            <p>Ingredient Name: {ingredient.name}</p>
-            <p>Location: {ingredient.origin.location}</p>
-            <p>Region: {ingredient.origin.region}</p>
-            <p>----</p>
-            </>
-          ))}
-            <h2>Restrictions</h2>
-            <p>---------------</p>
-            <p>Level Requirement: {potion.usage.restrictions.levelRequirement}</p>
-            <p>----</p>
-            <h2>Restricted Classes</h2>
-            {potion.usage.restrictions.classRestrictions.map((classes) => (
-            <>
-            <p>{classes}</p>
-            </>
-          ))}
-            <h2>Usage Warnings</h2>
-            <p>---------------</p>
-            {potion.usage.restrictions.warnings.map((warnings) => (
-            <>
-            <p>{warnings}</p>
-            </>
-          ))}
-            <h2>Creation Time</h2>
-            <p>---------------</p>
-            <p>Time: {potion.crafting.time.amount} {potion.crafting.time.unit}</p>
-            <h2>Instructions</h2>
-            <p>---------------</p>
-            {potion.usage.instructions.map((instructions) => (
-            <>
-            <p>{instructions}</p>
-            </>
-          ))}
-          </div>
-        ) : (<></>)}
         {currentPotions.length === 0 ? (
           <p className="text-center font-medium text-gray-300">No Potions...</p>
         ) : (
@@ -150,15 +95,7 @@ function App() {
               <span>Chance: {potion.meta.availability.drop_rate.chance}</span>
 
               <div>
-                <button
-                  data-modal-target="default-modal"
-                  data-modal-toggle="default-modal"
-                  type="button"
-                  className="px-4 py-1 bg-gray-300 text-black text-sm rounded hover:bg-gray-200 transition"
-                  onClick={() => showModal(potion)}
-                >
-                  Details
-                </button>
+                <PotionModal potion={potion} />
               </div>
             </div>
           ))
@@ -239,9 +176,11 @@ function App() {
         </button>
         {craftTime != null ? (
           <>
-          <p>Time to create all filtered potions = {craftTime} minutes</p>
+            <p>Time to create all filtered potions = {craftTime} minutes</p>
           </>
-        ) : (<></>)}
+        ) : (
+          <></>
+        )}
       </div>
     </>
   );
