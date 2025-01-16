@@ -17,9 +17,10 @@ const PotionCard: React.FC<Props> = ({ potion }) => {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
+          width="220"
           image={potion.image}
           alt="potion"
+          className="h-42 object-contain rounded-full"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
@@ -34,8 +35,8 @@ const PotionCard: React.FC<Props> = ({ potion }) => {
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <PotionModal potion={potion} />
+      <CardActions className="h-12 grid-cols-3 gap-4 content-center flex items-center justify-center ma">
+        <PotionModal potion={potion} key={`modal_${potion.id}`} />
       </CardActions>
     </Card>
   );

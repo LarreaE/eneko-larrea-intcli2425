@@ -6,19 +6,18 @@ import Modal from "@mui/material/Modal";
 import { Potion } from "../types/Potion";
 
 const style = {
-  position:'absolute',
-  overflow:'scroll',
-  height:'70%',
-  top: '50%',
-  left: '50%',  
-  transform: 'translate(-50%, -50%)',
-  display:'block',
+  position: "absolute",
+  overflow: "scroll",
+  height: "70%",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  display: "block",
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
-
 
 interface Props {
   potion: Potion;
@@ -39,56 +38,59 @@ const PotionModal: React.FC<Props> = ({ potion }) => {
       >
         <Box sx={style}>
           <Box>
-          <Typography id="modal-modal-title" variant="h6" component="h1">
-            {potion.name}
-          </Typography>
+            <Typography id="modal-modal-title" variant="h6" component="h1">
+              {potion.name}
+            </Typography>
           </Box>
-         
 
-          <div className="">
-            <div>
+          <div key={`modal_div_${potion.id}`}>
+            <div key={`modal_div_2_${potion.id}`} className="">
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 Effects
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
+              <Typography variant="h6" component="h2">
                 Primary Effect
               </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              <Typography sx={{ mt: 2 }}>
                 Attribute: {potion.effects.primary.attribute}
               </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+              <Typography sx={{ mt: 2 }}>
                 Duration: {potion.effects.primary.duration.amount}{" "}
                 {potion.effects.primary.duration.unit}
               </Typography>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
+              <Typography variant="h6" component="h2">
                 Secondary Effects
               </Typography>
               {potion.effects.secondary.map((effect) => (
                 <>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Effect Name: {effect.attribute}
-                  </Typography>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Duration: {effect.duration.amount} {effect.duration.unit}
-                  </Typography>
+                  <div key={`second_effects_${potion.id}`}>
+                    <Typography sx={{ mt: 2 }}>
+                      Effect Name: {effect.attribute}
+                    </Typography>
+                    <Typography sx={{ mt: 2 }}>
+                      Duration: {effect.duration.amount} {effect.duration.unit}
+                    </Typography>
+                  </div>
                 </>
               ))}
             </div>
             <div>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
+              <Typography variant="h6" component="h2">
                 Ingredients
               </Typography>
               {potion.ingredients.map((ingredient) => (
                 <>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Ingredient Name: {ingredient.name}
-                  </Typography>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Location: {ingredient.origin.location}
-                  </Typography>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    Region: {ingredient.origin.region}
-                  </Typography>
+                  <div key={`ingredients_${potion.id}`}>
+                    <Typography sx={{ mt: 2 }}>
+                      Ingredient Name: {ingredient.name}
+                    </Typography>
+                    <Typography sx={{ mt: 2 }}>
+                      Location: {ingredient.origin.location}
+                    </Typography>
+                    <Typography sx={{ mt: 2 }}>
+                      Region: {ingredient.origin.region}
+                    </Typography>
+                  </div>
                 </>
               ))}
             </div>
@@ -104,22 +106,25 @@ const PotionModal: React.FC<Props> = ({ potion }) => {
               </Typography>
               {potion.usage.restrictions.classRestrictions.map((classes) => (
                 <>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    {classes}
-                  </Typography>
+                  <div key={`classes_${potion.id}`}>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                      {classes}
+                    </Typography>
+                  </div>
                 </>
               ))}
             </div>
-
             <div>
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 Usage Warnings
               </Typography>
               {potion.usage.restrictions.warnings.map((warnings) => (
                 <>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    {warnings}
-                  </Typography>
+                  <div key={`warnings_${potion.id}`}>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                      {warnings}
+                    </Typography>
+                  </div>
                 </>
               ))}
             </div>
@@ -131,16 +136,17 @@ const PotionModal: React.FC<Props> = ({ potion }) => {
                 Time: {potion.crafting.time.amount} {potion.crafting.time.unit}
               </Typography>
             </div>
-
             <div>
               <Typography id="modal-modal-title" variant="h6" component="h2">
                 Instructions
               </Typography>
               {potion.usage.instructions.map((instructions) => (
                 <>
-                  <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                    {instructions}
-                  </Typography>
+                  <div key={`instructions_${potion.id}`}>
+                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                      {instructions}
+                    </Typography>
+                  </div>
                 </>
               ))}
             </div>
